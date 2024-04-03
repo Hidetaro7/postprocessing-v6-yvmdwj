@@ -34,17 +34,23 @@ export function createLights() {
 	const lightProbe = new LightProbe();
 	lightProbe.sh.coefficients = shCoefficients.map(x => new Vector3(x[0], x[1], x[2]));
 
+	const addLightParams = (lt, pos) => {
+		lt.position.copy(pos);
+		lt.castShadow = true;
+		lt.shadow.bias = -0.015;
+		lt.shadow.mapSize.width = 1024;
+		lt.shadow.mapSize.height = 1024;
+		lt.shadow.radius = 4;
+		lt.shadow.camera.near = 0.1;
+	}
+
 	const lightCeiling = new PointLight(0xd9a859, 1, 10);
-	lightCeiling.position.set(0, 0.84, 0);
-	lightCeiling.castShadow = true;
-	lightCeiling.shadow.bias = -0.015;
-	lightCeiling.shadow.mapSize.width = 1024;
-	lightCeiling.shadow.mapSize.height = 1024;
-	lightCeiling.shadow.radius = 4;
-	lightCeiling.shadow.camera.near = 0.1;
+	addLightParams(lightCeiling, new Vector3( 0, 0.84, 0 ))
+	const lightCeiling2 = new PointLight(0xd9a859, 1, 20);
+	addLightParams(lightCeiling2, new Vector3( 0.8, -.2, 0 ))
 
 	const lights = new Group();
-	lights.add(lightProbe, lightCeiling);
+	lights.add(lightProbe, lightCeiling, lightCeiling2);
 
 	return lights;
 

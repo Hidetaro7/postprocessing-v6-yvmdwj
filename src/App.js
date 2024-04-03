@@ -69,7 +69,7 @@ export function initialize(assets) {
 	// Post Processing
 
 const bloom = new BloomEffect();
-bloom.intensity = 0.1
+bloom.intensity = 10
 	const renderPass = new RenderPass(scene, camera);
 	const effectPass = new EffectPass(camera, bloom);
 
