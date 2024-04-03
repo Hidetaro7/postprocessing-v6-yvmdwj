@@ -1,0 +1,28 @@
+{
+	"name": "postprocessing-sandbox",
+	"version": "0.0.0",
+	"private": true,
+	"type": "module",
+	"scripts": {
+		"dev": "run-s build watch",
+		"build": "node esbuild",
+		"preview": "run-s build serve",
+		"start": "serve public",
+		"watch": "run-p watch:* start",
+		"watch:tsc": "tsc --watch --preserveWatchOutput",
+		"watch:js": "node esbuild -w"
+	},
+	"dependencies": {
+		"postprocessing": "6.x.x",
+		"spatial-controls": "6.x.x",
+		"three": "0.162.x"
+	},
+	"devDependencies": {
+		"@types/three": "0.x.x",
+		"esbuild": "0.x.x",
+		"npm-run-all": "4.x.x",
+		"serve": "14.x.x",
+		"tslib": "2.x.x",
+		"typescript": "5.x.x"
+	}
+}
